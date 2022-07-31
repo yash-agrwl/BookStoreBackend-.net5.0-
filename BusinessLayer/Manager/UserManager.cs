@@ -33,7 +33,7 @@ namespace BusinessLayer.Manager
             }
         }
 
-        public ResponseModel<UserModel> Login(LoginModel userData)
+        public ResponseModel<UserInfoModel> Login(LoginModel userData)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace BusinessLayer.Manager
             }
         }
 
-        public UserModel GetUserByEmail(string email)
+        public UserInfoModel GetUserByEmail(string email)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace BusinessLayer.Manager
             }
         }
 
-        public UserModel GetUserById(int id)
+        public UserInfoModel GetUserById(int id)
         {
             try
             {
@@ -101,6 +101,7 @@ namespace BusinessLayer.Manager
             {
                 Subject = new ClaimsIdentity(new[]
                 {
+                    new Claim(ClaimTypes.Role, "User"),
                     new Claim("UserId", userId.ToString()),
                     new Claim ("EmailId", emailId)
                 }),

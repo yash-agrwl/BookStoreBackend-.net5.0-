@@ -71,7 +71,7 @@ namespace BookStoreBackend.Controllers
         {
             try
             {
-                var result = new ResponseModel<UserModel>();
+                var result = new ResponseModel<UserInfoModel>();
                 result.Data = this._manager.GetUserByEmail(email);
 
                 if (result.Data != null)
@@ -96,7 +96,7 @@ namespace BookStoreBackend.Controllers
         {
             try
             {
-                var result = new ResponseModel<UserModel>();
+                var result = new ResponseModel<UserInfoModel>();
                 result.Data = this._manager.GetUserById(id);
 
                 if (result.Data != null)

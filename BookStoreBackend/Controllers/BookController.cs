@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace BookStoreBackend.Controllers
 {
     [ApiController]
+    [Authorize(Roles = Role.Admin)]
     [Route("api/[Controller]")]
     public class BookController : Controller
     {
@@ -79,6 +81,7 @@ namespace BookStoreBackend.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("GetById")]
         public IActionResult GetBookById(int bookId)
@@ -100,6 +103,7 @@ namespace BookStoreBackend.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("GetAll")]
         public IActionResult GetAllBooks()

@@ -87,11 +87,11 @@ namespace RepositoryLayer.Repository
             return encryptData.ToString();
         }
 
-        public ResponseModel<UserModel> Login(LoginModel userData)
+        public ResponseModel<UserInfoModel> Login(LoginModel userData)
         {
             try
             {
-                var result = new ResponseModel<UserModel>();
+                var result = new ResponseModel<UserInfoModel>();
                 var existUser = GetUserByEmail(userData.Email);
                 result.Data = existUser;
 
@@ -126,9 +126,9 @@ namespace RepositoryLayer.Repository
 
         }
 
-        public UserModel GetUserByEmail(string email)
+        public UserInfoModel GetUserByEmail(string email)
         {
-            var user = new UserModel();
+            var user = new UserInfoModel();
             using (MySqlConnection con = new MySqlConnection(_connectionString))
             {
                 MySqlCommand cmd = new MySqlCommand("sp_GetUserByEmail", con);
@@ -157,9 +157,9 @@ namespace RepositoryLayer.Repository
 
         }
 
-        public UserModel GetUserById(int id)
+        public UserInfoModel GetUserById(int id)
         {
-            var user = new UserModel();
+            var user = new UserInfoModel();
             using (MySqlConnection con = new MySqlConnection(_connectionString))
             {
                 MySqlCommand cmd = new MySqlCommand("sp_GetUserById", con);

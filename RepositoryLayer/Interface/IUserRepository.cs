@@ -5,9 +5,9 @@ namespace RepositoryLayer.Interface
     public interface IUserRepository
     {
         string ForgotPassword(string email);
-        UserModel GetUserByEmail(string email);
-        UserModel GetUserById(int id);
-        ResponseModel<UserModel> Login(LoginModel userData);
+        UserInfoModel GetUserByEmail(string email);
+        UserInfoModel GetUserById(int id);
+        ResponseModel<UserInfoModel> Login(LoginModel userData);
         ResponseModel<ResetPasswordModel> ResetPassword(ResetPasswordModel userData);
         ResponseModel<RegisterModel> Signup(RegisterModel userData);
     }
