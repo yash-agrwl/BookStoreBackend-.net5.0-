@@ -259,7 +259,7 @@ namespace RepositoryLayer.Repository
         {
             Message message = new Message
             {
-                Formatter = new XmlMessageFormatter(),
+                Formatter = new BinaryMessageFormatter(),
                 Body = url
             };
 
@@ -288,7 +288,7 @@ namespace RepositoryLayer.Repository
             ////for reading from MSMQ
             var receiveQueue = new MessageQueue(@".\Private$\ResetPasswordQueue");
             var receiveMsg = receiveQueue.Receive();
-            receiveMsg.Formatter = new XmlMessageFormatter();
+            receiveMsg.Formatter = new BinaryMessageFormatter();
             return receiveMsg.Body.ToString();
         }
 

@@ -47,7 +47,14 @@ namespace BookStoreBackend.Controllers
 
                 if (result.Status == true)
                 {
-                    return this.Ok(result);
+                    string token = this._manager.GenerateToken(result.Data.UserID, result.Data.EmailID);
+                    return this.Ok(new
+                    {
+                        result.Status,
+                        result.Message,
+                        token,
+                        result.Data
+                    });
                 }
 
                 return this.BadRequest(result);

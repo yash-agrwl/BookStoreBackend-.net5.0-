@@ -93,13 +93,17 @@ namespace BusinessLayer.Manager
             }
         }
 
-        public string GenerateToken(int userId)
+        public string GenerateToken(int userId, string emailId)
         {
             byte[] key = Encoding.UTF8.GetBytes(this._config["JwtToken:SecretKey"]);
             SymmetricSecurityKey securityKey = new SymmetricSecurityKey(key);
             SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("UserId", userId.ToString()) }),
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim("UserId", userId.ToString()),
+                    new Claim ("EmailId", emailId)
+                }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature)
             };

@@ -10,5 +10,6 @@ namespace BusinessLayer.Interface
         UserModel GetUserById(int id);
         ResponseModel<ResetPasswordModel> ResetPassword(ResetPasswordModel userData);
         string ForgotPassword(string email);
+        string GenerateToken(int userId, string emailId);
     }
 }
