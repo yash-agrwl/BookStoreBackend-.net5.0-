@@ -1,6 +1,5 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer;
-using Microsoft.Extensions.Configuration;
 using RepositoryLayer.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,12 +9,10 @@ namespace BusinessLayer.Manager
     public class CartManager : ICartManager
     {
         private readonly ICartRepository _repository;
-        private readonly IConfiguration _config;
 
-        public CartManager(ICartRepository repository, IConfiguration configuration)
+        public CartManager(ICartRepository repository)
         {
             this._repository = repository;
-            this._config = configuration;
         }
 
         public ResponseModel<CartInfoModel> AddToCart(int userId, int bookId)
