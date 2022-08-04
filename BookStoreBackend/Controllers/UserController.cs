@@ -2,6 +2,7 @@
 using CommonLayer;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace BookStoreBackend.Controllers
 {
@@ -67,10 +68,11 @@ namespace BookStoreBackend.Controllers
 
         [HttpGet]
         [Route("GetByEmail")]
-        public IActionResult GetUserByEmail(string email)
+        public IActionResult GetUserByEmail()
         {
             try
             {
+                string email = User.Claims.FirstOrDefault(x => x.Type == "EmailId").Value;
                 var result = new ResponseModel<UserInfoModel>();
                 result.Data = this._manager.GetUserByEmail(email);
 
@@ -92,12 +94,13 @@ namespace BookStoreBackend.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        public IActionResult GetUserById(int id)
+        public IActionResult GetUserById()
         {
             try
             {
+                int userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
                 var result = new ResponseModel<UserInfoModel>();
-                result.Data = this._manager.GetUserById(id);
+                result.Data = this._manager.GetUserById(userId);
 
                 if (result.Data != null)
                 {

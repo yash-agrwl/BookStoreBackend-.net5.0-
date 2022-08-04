@@ -43,6 +43,9 @@ namespace BookStoreBackend
             services.AddTransient<IWishListRepository, WishListRepository>();
             services.AddTransient<IWishListManager, WishListManager>();
 
+            services.AddTransient<IAddressRepository, AddressRepository>();
+            services.AddTransient<IAddressManager, AddressManager>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStoreBackend", Version = "v1" });
