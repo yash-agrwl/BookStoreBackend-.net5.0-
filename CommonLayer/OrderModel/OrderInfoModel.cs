@@ -9,13 +9,13 @@ namespace CommonLayer.OrderModel
 {
     public class OrderInfoModel
     {
-        public int OrderId { get; set; }
-        public int UserId { get; set; }
-        public int BookId { get; set; }
+        public int OrderID { get; set; }
+        public int UserID { get; set; }
+        public int BookID { get; set; }
         public BookInfoModel BookData { get; set; }
-        public int AddressId { get; set; }
+        public int AddressID { get; set; }
         public int OrderQty { get; set; }
         public float TotalPrice { get; set; }
-        public DateTime OrderDate { get; set; }
+        public string OrderDate { get; set; }
     }
 }

@@ -14,12 +14,14 @@ namespace RepositoryLayer.Repository
         private readonly IConfiguration _config;
         private readonly string _connectionString;
         private readonly MySqlConnection _con = new();
+        private readonly IBookRepository _bookRepo;
 
-        public OrderRepository(IConfiguration configuration)
+        public OrderRepository(IConfiguration configuration, IBookRepository bookRepo)
         {
             this._config = configuration;
             this._connectionString = _config.GetConnectionString("BookStoreDB");
             this._con.ConnectionString = this._connectionString;
+            this._bookRepo = bookRepo;
         }
 
         public ResponseModel<PlaceOrderModel> PlaceOrder(PlaceOrderModel orderData, int userId)
@@ -32,9 +34,8 @@ namespace RepositoryLayer.Repository
                 command.CommandType = CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("@u_id", userId);
-                command.Parameters.AddWithValue("@b_id", orderData.BookID);
+                command.Parameters.AddWithValue("@c_id", orderData.CartID);
                 command.Parameters.AddWithValue("@add_id", orderData.AddressID);
-                command.Parameters.AddWithValue("@qty", orderData.OrderQty);
                 //command.Parameters.AddWithValue("@date", DateTime.Now.ToString("MMMM dd, yyyy"));
                 command.Parameters.Add("@msg", MySqlDbType.Text);
                 command.Parameters["@msg"].Direction = ParameterDirection.Output;
@@ -73,6 +74,42 @@ namespace RepositoryLayer.Repository
             try
             {
                 var result = new ResponseModel<List<OrderInfoModel>>();
+
+                var command = new MySqlCommand("sp_GetAllOrders", _con);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@u_id", userId);
+
+                _con.Open();
+                var dataReader = command.ExecuteReader();
+
+                if (dataReader.HasRows)
+                {
+                    result.Data = new List<OrderInfoModel>();
+
+                    while (dataReader.Read())
+                    {
+                        var orderData = new OrderInfoModel();
+                        orderData.OrderID = Convert.ToInt32(dataReader["OrderID"]);
+                        orderData.UserID = Convert.ToInt32(dataReader["UserID"]);
+                        orderData.BookID = Convert.ToInt32(dataReader["BookID"]);
+                        orderData.AddressID = Convert.ToInt32(dataReader["AddressID"]);
+                        orderData.OrderQty = Convert.ToInt32(dataReader["OrderQty"]);
+                        orderData.TotalPrice = (float) dataReader["TotalPrice"];
+                        orderData.OrderDate = Convert.ToDateTime(dataReader["OrderDate"]).ToString("MMMM dd, yyyy");
+                        var book = _bookRepo.GetBookById(orderData.BookID);
+                        orderData.BookData = book.Data;
+                        result.Data.Add(orderData);
+                    }
+
+                    _con.Close();
+                    result.Status = true;
+                    result.Message = $"{result.Data.Count} Orders Retrived Successfully";
+                    return result;
+                }
+
+                _con.Close();
+                result.Message = "No Orders Available";
                 return result;
             }
             catch (Exception ex)

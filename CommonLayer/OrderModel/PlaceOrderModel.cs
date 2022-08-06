@@ -8,8 +8,7 @@ namespace CommonLayer.OrderModel
 {
     public class PlaceOrderModel
     {
-        public int BookID { get; set; }
+        public int CartID { get; set; }
         public int AddressID { get; set; }
-        public int OrderQty { get; set; }
     }
 }
