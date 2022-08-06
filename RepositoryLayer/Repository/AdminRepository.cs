@@ -6,6 +6,8 @@ using System.Data;
 using System.Text;
 using System.Security.Cryptography;
 using RepositoryLayer.Interface;
+using CommonLayer.UserModel;
+using CommonLayer.AdminModel;
 
 namespace RepositoryLayer.Repository
 {

@@ -9,6 +9,7 @@ using System.Text;
 using Experimental.System.Messaging;
 using System.Net.Mail;
 using System.Net;
+using CommonLayer.UserModel;
 
 namespace RepositoryLayer.Repository
 {

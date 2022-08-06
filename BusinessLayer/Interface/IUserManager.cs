@@ -1,4 +1,5 @@
 ﻿using CommonLayer;
+using CommonLayer.UserModel;
 
 namespace BusinessLayer.Interface
 {

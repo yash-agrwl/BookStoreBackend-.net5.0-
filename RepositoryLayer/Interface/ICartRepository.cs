@@ -1,4 +1,5 @@
 ﻿using CommonLayer;
+using CommonLayer.CartModel;
 using System.Collections.Generic;
 
 namespace RepositoryLayer.Interface

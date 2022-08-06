@@ -1,4 +1,4 @@
-﻿namespace CommonLayer
+﻿namespace CommonLayer.AddressModel
 {
     public class AddressInfoModel
     {

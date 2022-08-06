@@ -1,4 +1,5 @@
 ﻿using CommonLayer;
+using CommonLayer.WishListModel;
 using System.Collections.Generic;
 
 namespace BusinessLayer.Interface

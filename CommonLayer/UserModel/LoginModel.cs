@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CommonLayer
+namespace CommonLayer.UserModel
 {
-    public class ResetPasswordModel
+    public class LoginModel
     {
         [Required]
         public string Email { get; set; }

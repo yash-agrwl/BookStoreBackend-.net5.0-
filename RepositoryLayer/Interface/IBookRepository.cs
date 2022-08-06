@@ -1,4 +1,5 @@
 ﻿using CommonLayer;
+using CommonLayer.BookModel;
 using System.Collections.Generic;
 
 namespace RepositoryLayer.Interface

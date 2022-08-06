@@ -1,4 +1,5 @@
 ﻿using CommonLayer;
+using CommonLayer.WishListModel;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using RepositoryLayer.Interface;

@@ -1,4 +1,5 @@
 ﻿using CommonLayer;
+using CommonLayer.AddressModel;
 using System.Collections.Generic;
 
 namespace BusinessLayer.Interface

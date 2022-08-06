@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CommonLayer
+namespace CommonLayer.UserModel
 {
     public class RegisterModel
     {

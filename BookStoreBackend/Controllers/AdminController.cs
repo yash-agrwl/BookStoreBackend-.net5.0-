@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer;
+using CommonLayer.AdminModel;
+using CommonLayer.UserModel;
 using Microsoft.AspNetCore.Mvc;
 using System;
 

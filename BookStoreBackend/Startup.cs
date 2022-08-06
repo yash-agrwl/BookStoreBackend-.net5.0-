@@ -46,6 +46,9 @@ namespace BookStoreBackend
             services.AddTransient<IAddressRepository, AddressRepository>();
             services.AddTransient<IAddressManager, AddressManager>();
 
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderManager, OrderManager>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStoreBackend", Version = "v1" });

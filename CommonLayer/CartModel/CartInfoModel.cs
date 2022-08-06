@@ -1,4 +1,6 @@
-﻿namespace CommonLayer
+﻿using CommonLayer.BookModel;
+
+namespace CommonLayer.CartModel
 {
     public class CartInfoModel
     {

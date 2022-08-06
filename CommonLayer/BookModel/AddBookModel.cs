@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CommonLayer
+namespace CommonLayer.BookModel
 {
     public class AddBookModel
     {

@@ -1,4 +1,6 @@
-﻿namespace CommonLayer
+﻿using CommonLayer.BookModel;
+
+namespace CommonLayer.WishListModel
 {
     public class WishListInfoModel
     {

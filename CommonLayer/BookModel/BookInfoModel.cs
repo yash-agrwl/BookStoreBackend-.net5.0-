@@ -1,4 +1,4 @@
-﻿namespace CommonLayer
+﻿namespace CommonLayer.BookModel
 {
     public class BookInfoModel
     {

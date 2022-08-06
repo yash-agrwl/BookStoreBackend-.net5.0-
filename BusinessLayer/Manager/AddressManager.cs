@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer;
+using CommonLayer.AddressModel;
 using RepositoryLayer.Interface;
 using System;
 using System.Collections.Generic;
