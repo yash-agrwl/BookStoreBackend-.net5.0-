@@ -38,8 +38,6 @@ namespace RepositoryLayer.Repository
                 command.Parameters.AddWithValue("@discount", bookData.DiscountPrice);
                 command.Parameters.AddWithValue("@actual", bookData.ActualPrice);
                 command.Parameters.AddWithValue("@qty", bookData.Quantity);
-                command.Parameters.AddWithValue("@rating", bookData.Rating);
-                command.Parameters.AddWithValue("@count", bookData.RatingCount);
 
                 _con.Open();
                 var rowsAffected = command.ExecuteNonQuery();
