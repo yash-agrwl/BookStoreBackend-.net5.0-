@@ -28,6 +28,8 @@ namespace BookStoreBackend
 
             services.AddControllers();
 
+            services.AddCors();
+
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserManager, UserManager>();
 
@@ -119,6 +121,13 @@ namespace BookStoreBackend
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookStoreBackend v1"));
             }
+
+            app.UseCors(builder => {
+                builder.SetIsOriginAllowed(origin => true);
+                builder.AllowAnyOrigin();
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
 
             app.UseHttpsRedirection();
 
